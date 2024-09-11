@@ -33,9 +33,9 @@ class Library:
             print(book.__str__())
 
     # 2.1 Check out book
-    def check_out_book(self, isbn, dni, due_date) -> str:
-        book_to_checkout = self.__books[0]
-        user_checkouting = self.__users[0]
+    def check_out_book(self, isbn: str, dni: str, due_date: str) -> str:
+        book_to_checkout: Book = self.__books[0]
+        user_checkouting: User = self.__users[0]
         check_book = False
         check_user = False
         for book in self.__books:
@@ -59,10 +59,10 @@ class Library:
                 return f"User {dni} checked out book {isbn}"
 
     # 2.2 Check in book
-    def check_in_book(self, isbn, dni, returned_date):
-        book_to_checkin = Book(isbn,'','')
-        user_checking_in = User('','')
-        check_book = False
+    def check_in_book(self, isbn: str, dni: str, returned_date: str) -> str:
+        book_to_checkin: Book = Book(isbn,'','')
+        user_checking_in: User = User('','')
+        check_book: bool = False
         for book in self.__books:
             if book == book_to_checkin:
                 book_to_checkin = book
@@ -70,7 +70,7 @@ class Library:
 
         for user in self.__users:
             if user.get_dni() == dni:
-                user_checking_in == user
+                user_checking_in = user
 
         if not check_book and book_to_checkin.is_available():
             return f"Book {isbn} is not available"
@@ -85,6 +85,6 @@ class Library:
 
 
     # Utils
-    def add_user(self, dni, name) -> None:
-        user = User(dni,name)
+    def add_user(self, dni: str, name: str) -> None:
+        user: User = User(dni,name)
         self.__users.append(user)
